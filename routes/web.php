@@ -12,11 +12,11 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+  return $router->app->version();
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-  $router->get('authors',  ['uses' => 'AuthorController@showAllAuthors']);
+  $router->get('authors', ['uses' => 'AuthorController@showAllAuthors']);
 
   $router->get('authors/{id}', ['uses' => 'AuthorController@showOneAuthor']);
 
@@ -26,8 +26,24 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
   $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
 
-    // Matches "/api/register
-    $router->post('register', 'AuthController@register');
+  // Matches "/api/register
+  $router->post('register', 'AuthController@register');
+  // Matches "/api/login
+  $router->post('login', 'AuthController@login');
+
+  // Matches "/api/profile
+  $router->get('profile', 'UserController@profile');
+
+  // Matches "/api/users/1 
+//get one user by id
+  $router->get('users/{id}', 'UserController@singleUser');
+
+  // Matches "/api/users
+  $router->get('users', 'UserController@allUsers');
+
+  $router->get('dummydata', 'DummyAPI@getData');
+
+  $router->post('postDataAPI', 'EmployeeController@addEmployee');
 
 });
 
