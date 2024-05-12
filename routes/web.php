@@ -44,6 +44,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   $router->get('dummydata', 'DummyAPI@getData');
 
   $router->post('postDataAPI', 'EmployeeController@addEmployee');
-
+  $router->post('postListDataAPI', 'EmployeeController@addEmployees');
+  $router->put('putEmpAPI', 'EmployeeController@updateEmployee');
+  $router->delete('deleteEmpAPI/{id}', 'EmployeeController@deleteEmployee');
+  $router->get('searchEmpAPI/{name}', 'EmployeeController@searchEmployee');
+  $router->post('validatedPostAPI', 'EmployeeController@validatedDataPost');
 });
 
